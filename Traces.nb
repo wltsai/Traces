@@ -4,7 +4,6 @@ d[x_] := Piecewise[{{1, x == 1}, {Sum[(Product[((2*x - 1)^2 - j^2), {j, 1, 2*i -
 
 C1[x_, y_] := 4*Pi*Sqrt[3*y] + (16*Pi^2*y)^(x - 1/2)*(Zeta[2*x - 1/2])^2*BesselI[2*x - 1, 1]
 
-
 C2[x_, y_] := 4*Pi*Sqrt[6*y]/(Factorial[2*x - 1])*(x - 1/4)^(2*x - 1/2) + Exp[-4*Pi*y]*(16*Pi^2*y)^(x - 1/2)*(Zeta[2*x - 1/2])^2*BesselI[2*x - 1, 1]
 
 # Constant C_E(\lambda,\nu)
