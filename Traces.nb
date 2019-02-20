@@ -6,11 +6,11 @@ C1[x_, y_] := 4*Pi*Sqrt[3*y] + (16*Pi^2*y)^(x - 1/2)*(Zeta[2*x - 1/2])^2*BesselI
 
 C2[x_, y_] := 4*Pi*Sqrt[6*y]/(Factorial[2*x - 1])*(x - 1/4)^(2*x - 1/2) + Exp[-4*Pi*y]*(16*Pi^2*y)^(x - 1/2)*(Zeta[2*x - 1/2])^2*BesselI[2*x - 1, 1]
 
-# Constant C_E(\lambda,\nu)
-CE[x_, y_] := (c[x] + ((-1)^(x + 1))*DivisorSigma[2*x - 1, y]*Factorial[2*x]/((2*x - 1)*BernoulliB[2*x]*Factorial[x - 1]*(2*Pi)^(x - 1))) + Pi*y^(x - 1/2)*C1[x, y]*d[x]*(4*Pi*Sqrt[3])^(-x)*Factorial[2*x]/(Factorial[x]*3^(1/4)) + Pi*y^(x - 1/2)*C2[x, y]*d[x]*(Gamma[x + 1/2, Ceiling[16*y/3]] + Integrate[Exp[4*Pi*Sqrt[t*y] - Pi*Sqrt[3]*t]*t^(x - 1/2), {t, 1, Floor[16*y/3]}])
+# "Constant C_E(\lambda,\nu)" 
+C3[x_, y_] := (c[x] + ((-1)^(x + 1))*DivisorSigma[2*x - 1, y]*Factorial[2*x]/((2*x - 1)*BernoulliB[2*x]*Factorial[x - 1]*(2*Pi)^(x - 1))) + Pi*y^(x - 1/2)*C1[x, y]*d[x]*(4*Pi*Sqrt[3])^(-x)*Factorial[2*x]/(Factorial[x]*3^(1/4)) + Pi*y^(x - 1/2)*C2[x, y]*d[x]*(Gamma[x + 1/2, Ceiling[16*y/3]] + Integrate[Exp[4*Pi*Sqrt[t*y] - Pi*Sqrt[3]*t]*t^(x - 1/2), {t, 1, Floor[16*y/3]}])
 
-# Constant C(\lambda,\nu)
-C[x_, y_] := CE[x, y] + 1/2*(Exp[2*Pi*y] + 1)*y^(x - 1)*Sum[Factorial[x - 1 + t]/(Factorial[x - 1 - t]*Factorial[t]), {t, 0,  x - 1}]
+# "Constant C(\lambda,\nu)"
+C4[x_, y_] := C3[x, y] + 1/2*(Exp[2*Pi*y] + 1)*y^(x - 1)*Sum[Factorial[x - 1 + t]/(Factorial[x - 1 - t]*Factorial[t]), {t, 0,  x - 1}]
 
-# Constant C'(\lambda,\nu)
-CPRIME[x_, y_] :=  0.2065*CE[x, y] + 7.5987*4^x*Factorial[x]/Factorial[2*x]*y^(x - 3/2) 
+# "Constant C'(\lambda,\nu)"
+C5[x_, y_] :=  0.2065*C3[x, y] + 7.5987*4^x*Factorial[x]/Factorial[2*x]*y^(x - 3/2) 
