@@ -1,18 +1,19 @@
 c[x_] := Piecewise[{{-12, x == 1}, {0, x > 1}}]
-
 d[x_] := Piecewise[{{1, x == 1}, {Sum[(Product[((2*x - 1)^2 - j^2), {j, 1, 2*i - 1}])/(Factorial[i]*8^i), {i, 0, x}], x > 1}}]
 
-C1[x_, y_] := (3.2)*Pi*Sqrt[3*y] + (16*Pi^2*y)^(x - 1/2)*(Zeta[2*x - 1/2])^2*BesselI[2*x - 1, 1]
+C1[x_, y_] := (3.2)*Pi*Sqrt[3*y] + ((16*Pi^2*y)^(x - 1/2))*((Zeta[2*x - 1/2])^2)* BesselI[2*x - 1, 1]
 
-C2[x_, y_] := 4*Pi*Sqrt[6*y]/(Factorial[2*x - 1])*(x - 1/4)^(2*x - 1/2) + Exp[-4*Pi*y]*(16*Pi^2*y)^(x - 1/2)*(Zeta[2*x - 1/2])^2*BesselI[2*x - 1, 1]
+C2[x_, y_] := 4*Pi*Sqrt[6*y]/(Factorial[2*x - 1])*((x - 1/4)^(2*x - 1/2)) + Exp[-4*Pi*y^(1/2)]*((16*Pi^2*y)^(x - 1/2))*((Zeta[2*x - 1/2])^2)*BesselI[2*x - 1, 1]
 
 # "Constant C_E(\lambda,\nu)"
-C3[x_, y_] := (c[x] + (DivisorSigma[2*x - 1, y]*Pi^(1 + x)*2*(1.2)^(x - 1)/((2*x - 1)*Gamma[x]*Zeta[2*x])))
-+Pi*y^(x - 1/2)*C1[x, y]*d[x]*PolyLog[1/2 - x, Exp[-Pi*3^(1/2)]]
-+Pi*y^(x - 1/2)*C2[x, y]*d[x]*((2*(11*y)^(x + 1/2)*Exp[4*Pi*(11)^(1/2)*y])/(2 x + 1) + PolyLog[1/2 - x, Exp[-1]])
+C3[x_, y_] := (c[x] + (DivisorSigma[2*x - 1, y]*(Pi^(1 + x))*2*((1.2)^(x - 1))/((2*x - 1)*Gamma[x]*Zeta[2*x]))) + Pi*(y^(x - 1/2))*C1[x, y]*d[x]*PolyLog[1/2 - x, Exp[-Pi*3^(1/2)]] + Pi*(y^(x - 1/2))*C2[x, y]*d[x]*((Sum[Exp[4*Pi*(y*i)^(1/2) - Pi*i*(3)^(1/2)]*(i)^(x - 1/2), {i, 1, Floor[32*y/3]}]) + PolyLog[1/2 - x, Exp[-1]])
+
 
 # "Constant C(\lambda,\nu)"
-C4[x_, y_] := C3[x, y] + 1/2*(Exp[2*Pi*y] + 1)*y^(x - 1)*Sum[Factorial[x - 1 + t]/(Factorial[x - 1 - t]*Factorial[t]), {t, 0, x - 1}]
+C4[x_, y_] := C3[x, y] + 1/2*(Exp[2*Pi*y] + 1)*(y^(x - 1))*Sum[Factorial[x - 1 + t]/(Factorial[x - 1 - t]*Factorial[t]), {t, 0, x - 1}]
+
 
 # "Constant C'(\lambda,\nu)"
-C5[x_, y_] := (0.3)*C3[x, y] + (7.6)*(Pi)^(1/2)*y^(x - 3/2)/Gamma[x + 1/2]
+C5[x_, y_] := (0.3)*C3[x, y] + (7.6)*((Pi)^(1/2))*(y^(x - 3/2))/Gamma[x + 1/2]
+
+
