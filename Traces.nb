@@ -15,4 +15,4 @@ C3[x_, y_] := (c[x] + (DivisorSigma[2*x - 1, y]*Pi^(1 + x)*2*(1.2)^(x - 1)/((2*x
 C4[x_, y_] := C3[x, y] + 1/2*(Exp[2*Pi*y] + 1)*y^(x - 1)*Sum[Factorial[x - 1 + t]/(Factorial[x - 1 - t]*Factorial[t]), {t, 0, x - 1}]
 
 # "Constant C'(\lambda,\nu)"
-C5[x_, y_] := (0.3)*C3[x, y] + (7.6)*4^x*Factorial[x]/Factorial[2*x]*y^(x - 3/2)
+C5[x_, y_] := (0.3)*C3[x, y] + (7.6)*(Pi)^(1/2)*y^(x - 3/2)/Gamma[x + 1/2]
